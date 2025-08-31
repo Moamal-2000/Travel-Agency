@@ -1,0 +1,28 @@
+{
+    "Destination":["Egypt","france","El Sharm","italy","german"],
+    "check in":["Sun, 17th Sep 2020","Mon, 18th Sep 2020","Tue, 19th Sep 2020"],
+    "check out":["Tue, 17th Oct 2020","Wed, 18th Oct 2020","Thu, 19th Oct 2020"],
+    "slide Title":["Egypt","Egypt","Egypt","Egypt","Egypt","Egypt","Egypt","Egypt"],
+    "slide Text":[
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, blanditiis laborum qui delectus eius eaque?",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, blanditiis laborum qui delectus eius eaque?",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, blanditiis laborum qui delectus eius eaque?",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, blanditiis laborum qui delectus eius eaque?",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, blanditiis laborum qui delectus eius eaque?",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, blanditiis laborum qui delectus eius eaque?",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, blanditiis laborum qui delectus eius eaque?",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, blanditiis laborum qui delectus eius eaque?"
+    ],
+    "offer title":["Lisbon, Portugal","Athens, Greece","Rome, Italy","Lisbon, Portugal","Athens, Greece","Rome, Italy"],
+    "offer info":[
+        "5 nights and 4 days in 5 star hotel, breakfast and lunch included. Very popular during the renaissance. Passage and going through the cites of the world in classical literature.",
+        "5 nights and 4 days in 5 star hotel, breakfast and lunch included. Very popular during the renaissance. Passage and going through the cites of the world in classical literature.",
+        "5 nights and 4 days in 5 star hotel, breakfast and lunch included. Very popular during the renaissance. Passage and going through the cites of the world in classical literature.",
+        "5 nights and 4 days in 5 star hotel, breakfast and lunch included. Very popular during the renaissance. Passage and going through the cites of the world in classical literature.",
+        "5 nights and 4 days in 5 star hotel, breakfast and lunch included. Very popular during the renaissance. Passage and going through the cites of the world in classical literature.",
+        "5 nights and 4 days in 5 star hotel, breakfast and lunch included. Very popular during the renaissance. Passage and going through the cites of the world in classical literature."
+
+
+    ],
+    "offer prices":["300$","200$","400$","300$","200$","400$"]
+}

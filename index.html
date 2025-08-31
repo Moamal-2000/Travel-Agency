@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet" />
+
+    <!-- css files -->
+    <link rel="stylesheet" href="css/brands.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <!-- tailwind -->
+    <link rel="stylesheet" href="css/output.css" />
+    <link rel="stylesheet" href="css/master.css" />
+</head>
+
+<body>
+
+    <div class="go-up opacity-0 py-2 px-2 bg-main  text-white">
+        <i class="fa-solid fa-angle-up"></i>
+    </div>
+    <div class="bullets">
+        <ul class="auto">
+            <!-- we will add items with js -->
+        </ul>
+    </div>
+    <!-- img -->
+    <div class="hidden imgscroll">
+        <img src="photos/background-0.jpg" alt="" />
+        <img src="photos/background-1.jpg" alt="" />
+        <img src="photos/background-2.jpg" alt="" />
+        <img src="photos/background-3.jpg" alt="" />
+        <img src="photos/background-4.jpg" alt="" />
+    </div>
+    <div class="home pb-24" id="home">
+        <div class="container mx-auto">
+            <div class="header pt-3 flex flex-row justify-around bg-transparent items-center text-white py-3">
+                <div class="logo">
+                    <h2 class="text-2xl">Travilian</h2>
+                </div>
+
+                <div class="links">
+                    <!-- زر فتح المنيو في الموبايل -->
+                    <i class="fa-solid fa-list list" style="cursor: pointer; font-size: 22px"></i>
+
+                    <ul class="ul-links flex flex-row justify-between items-center gap-8">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destination">Travel</a></li>
+                        <li><a href="#trip-planner">Trip Planner</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#offer">Pricing</a></li>
+                        <li><a href="#gallery">Explore</a></li>
+                    </ul>
+                </div>
+
+                <div class="account hidden gap-9 ">
+                    <button>login</button>
+                    <button
+                        class="py-2 px-3 rounded-md bg-orange-500 hover:bg-orange-600 cursor-pointer hover:drop-shadow-md">
+                        sign up
+                    </button>
+                </div>
+
+
+            </div>
+            <!-- End header -->
+        </div>
+        <div class="main-content">
+            <div class="container">
+                <div class="main-text text-white">
+                    <h1>Start your unforgettable journey with us.</h1>
+                    <p class="mt-4 text-2xl">
+                        The best travel for your jouney begins now
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="reserve w-2/3 bg-white p-6 relative flex flex-wrap rounded-r-md gap-4 md:flex-row flex-col z-10">
+                <div class="planes flex flex-wrap md:flex-row flex-col gap-6 w-full">
+                    <div class="box Destination flex flex-col w-full md:w-auto">
+                        <span>Destination</span>
+                        <select class="border border-solid border-stone-500 p-2 rounded">
+                            <!-- we will add it with js -->
+                        </select>
+                    </div>
+                    <div class="box flex flex-col w-full md:w-auto">
+                        <span>Person</span>
+                        <select class="border border-solid border-stone-500 p-2 rounded">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <div class="box check-in flex flex-col w-full md:w-auto">
+                        <span>Check in</span>
+                        <select class="border border-solid border-stone-500 p-2 rounded">
+                            <!-- I will add it with js -->
+                        </select>
+                    </div>
+                    <div class="box check-out flex flex-col w-full md:w-auto">
+                        <span>Check out</span>
+                        <select class="border border-solid border-stone-500 p-2 rounded">
+                            <!-- I will add it with js -->
+                        </select>
+                    </div>
+                </div>
+                <div
+                    class="book mx-auto rounded-md text-white bg-main w-full flex justify-center items-center gap-3 py-3 hover:bg-orange-600">
+                    <a href="mailto:travelas@gmail.com">Book Now</a>
+                    <i class="fa-solid fa-plane"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End home -->
+    <!-- start destination -->
+    <div class="destination-section section-padding" id="destination">
+        <div class="container mx-auto">
+            <div class="text">
+                <h1>Popular Destination</h1>
+                <hr class="bg-main" />
+                <p class="sec-text mt-8 text-">
+                    Most popular destinations around the world, from historical places
+                    to natural wonders.
+                </p>
+            </div>
+            <div class="slide-control flex gap-2">
+                <button class="text-white bg-black py-2 px-3 flex justify-center items-center minus-trans">
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+                <button class="text-white bg-black py-2 px-3 flex justify-center items-center plus-trans">
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="slide mt-12">
+            <div class="img-slide hidden">
+                <img src="photos/des-1.jpg" alt="" />
+                <img src="photos/des-2.jpg" alt="" />
+                <img src="photos/des-3.jpg" alt="" />
+                <img src="photos/des-4.jpg" alt="" />
+                <img src="photos/des-5.jpg" alt="" />
+                <img src="photos/des-6.jpg" alt="" />
+                <img src="photos/des-7.jpg" alt="" />
+                <img src="photos/des-8.jpg" alt="" />
+            </div>
+            <!-- we will addd cards by js -->
+        </div>
+    </div>
+    <!-- start Offers -->
+    <div class="offer-section section-padding" id="offer">
+        <div class="container mx-auto flex flex-row-reverse">
+            <div class="text">
+                <h1 class="h1-title">Special offers</h1>
+                <hr class="bg-main" />
+                <p class="sec-text mt-8 text- h4">
+                    Check out our special offer and discounts
+                </p>
+            </div>
+            <div class="slide-control-offer flex gap-2">
+                <button class="text-white bg-black py-2 px-3 flex justify-center items-center minus-trans">
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+                <button class="text-white bg-black py-2 px-3 flex justify-center items-center plus-trans">
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="slide-offer mt-12">
+
+                <div class="img-slide-offer hidden">
+                    <img src="photos/offer-1.jpg" alt="" />
+                    <img src="photos/offer-2.jpg" alt="" />
+                    <img src="photos/offer-3.jpg" alt="" />
+                    <img src="photos/offer-4.jpg" alt="" />
+                    <img src="photos/offer-5.jpg" alt="" />
+                    <img src="photos/offer-6.jpg" alt="" />
+                </div>
+                <!-- we will addd cards by js -->
+            </div>
+        </div>
+
+    </div>
+    <!-- End offers -->
+    <!-- start blog -->
+    <div class="blog section-padding" id="blog">
+        <div class="container flex">
+            <div class="title">
+                <h1 class="h1-title">Our Blog</h1>
+                <hr class="bg-main w-28" />
+                <p class="sec-text mt-8 text- h4">
+                    An insight the incredible experience in the world
+                </p>
+            </div>
+            <div class="content">
+                <div class="img">
+                    <img src="photos/blog.jpg" alt="" />
+                </div>
+                <div class="info flex flex-col gap-4">
+                    <h1 class="h1-title">Beautiful Italy Let’s travel</h1>
+                    <p class="sec-text h4">
+                        But I must explain to you how all this mistaken idea of denouncing
+                        pleasure and praising pain was born and I will give you a complete
+                        account of the system and expound the actual teachings of the
+                        great explorer of the truth, the master- builder of human
+                        happiness. No one rejects, dislike, or avoids plasure itself,
+                        because it is pleasure, but because those who do not know how to
+                        pursue pleasure rationally encounter consequences that are
+                        extremly painful. Nor again is there anyone who loves or pursues.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end blog -->
+    <!-- start trip planner -->
+    <div class="planners section-padding relative" id="trip-planner">
+        <div class="container flex gap-20">
+            <div class="text flex gap-8 flex-col">
+                <div class="parent">
+                    <h1 class="h1-title">Trip Planners</h1>
+                    <hr />
+                </div>
+
+                <p class="sec-text h4">
+                    20 years from now you will be more disappointed by the things that
+                    you didn’t do. Stop regretting and start travelling, start throwing
+                    off the bowlines.
+                </p>
+                <div class="link control-parent-links">
+                    <a href="#">View all trip plans</a>
+                </div>
+            </div>
+
+            <div class="imgs flex items-center">
+                <img src="photos/planner-1.jpg" alt="" />
+                <img src="photos/planner-2.jpg" alt="" />
+                <img src="photos/planner-3.jpg" alt="" />
+            </div>
+            <div class="parent-img opacity-0">
+                <div class="over-lay"></div>
+
+                <div class="img-container">
+                    <div class="card relative">
+                        <img src="photos/planner-1.jpg" alt="" />
+                        <div class="info bg-transparent text-slate-50 absolute bottom-1 left-3 flex flex-col gap-2">
+                            <div class="link w-fit text-sec cursor-pointer">
+                                <a href="#" class="">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card relative">
+                        <img src="photos/planner-2.jpg" alt="" />
+                        <div class="info bg-transparent text-slate-50 absolute bottom-1 left-3 flex flex-col gap-2">
+                            <div class="link w-fit text-sec cursor-pointer">
+                                <a href="#" class="">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card relative">
+                        <img src="photos/planner-3.jpg" alt="" />
+                        <div class="info bg-transparent text-slate-50 absolute bottom-1 left-3 flex flex-col gap-2">
+                            <div class="link w-fit text-sec cursor-pointer">
+                                <a href="#" class="">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card relative">
+                        <img src="photos/planner-4.jpg" alt="" />
+                        <div class="info bg-transparent text-slate-50 absolute bottom-1 left-3 flex flex-col gap-2">
+                            <div class="link w-fit text-sec cursor-pointer">
+                                <a href="#" class="">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card relative">
+                        <img src="photos/planner-5.jpg" alt="" />
+                        <div class="info bg-transparent text-slate-50 absolute bottom-1 left-3 flex flex-col gap-2">
+                            <div class="link w-fit text-sec cursor-pointer">
+                                <a href="#" class="">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card relative">
+                        <img src="photos/planner-6.jpg" alt="" />
+                        <div class="info bg-transparent text-slate-50 absolute bottom-1 left-3 flex flex-col gap-2">
+                            <div class="link w-fit text-sec cursor-pointer">
+                                <a href="#" class="">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card relative">
+                        <img src="photos/planner-7.jpg" alt="" />
+                        <div class="info bg-transparent text-slate-50 absolute bottom-1 left-3 flex flex-col gap-2">
+                            <div class="link w-fit text-sec cursor-pointer">
+                                <a href="#" class="">Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-controler">
+                        <i class="fa-solid fa-angle-left minus-trans"></i>
+                        <i class="fa-solid fa-angle-right plus-trans"></i>
+                    </div>
+                    <div
+                        class="control-vision absolute right-1 bottom-1 bg-red-700 text-white py-1 px-2 cursor-pointer">
+                        <span>close</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- start destination gallery  -->
+    <div class="destination-gallery section-padding" id="gallery">
+        <div class="container flex justify-between">
+            <div class="text flex flex-col gap-2">
+                <h2 class="h1-title">Destination Gallery</h2>
+                <hr />
+                <p class="sec-text">Our photo gallery on trip</p>
+            </div>
+            <div class="slide-control-galley self-end flex gap-3">
+                <button class="py-2 px-2 bg-black text-white">
+                    <i class="fa-solid fa-angle-left minus-gallrey"></i>
+                </button>
+                <button class="py-2 px-2 bg-black text-white">
+                    <i class="fa-solid fa-angle-right plua-gallery"></i>
+                </button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="slide-gallery flex items-center gap-3 mt-16 overflow-x-hidden">
+                <div class="img-gallery hidden">
+                    <img src="photos/man-1.jpg" alt="" />
+                    <img src="photos/man-2.jpg" alt="" />
+                    <img src="photos/man-3.jpg" alt="" />
+                    <img src="photos/man-4.jpg" alt="" />
+                    <img src="photos/man-8.jpg" alt="" />
+                    <img src="photos/man-7.jpg" alt="" />
+                    <img src="photos/man-8.jpg" alt="" />
+                    <img src="photos/man-9.jpg" alt="" />
+                    <img src="photos/man-1.jpg" alt="" />
+                </div>
+                <!-- we will add it by js -->
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- views -->
+    <div class="views section-padding" id="comments">
+        <div class="container">
+            <div class="text">
+                <h2 class="h1-title">Traveler’s Experiences</h2>
+                <hr>
+                <p>Here some awesome feedback from our travelers</p>
+            </div>
+
+            <!-- comments -->
+            <div class="comments flex gap-3">
+                <div class="img-comments-hidden hidden">
+                    <img src="photos/profile-1.jpeg" alt="">
+                    <img src="photos/profile-2.jpeg" alt="">
+                    <img src="photos/profile-3.jpeg" alt="">
+                    <img src="photos/profile-4.jpeg" alt="">
+                    <img src="photos/profile-5.jpeg" alt="">
+                </div>
+                <!-- we will add it by js -->
+                <div class="slide-comments"></div>
+            </div>
+
+            <!-- control -->
+            <div class="slide-control-comments justify-center flex gap-3">
+                <button class="py-2 px-2 bg-black text-white">
+                    <i class="fa-solid fa-angle-left minus-comments"></i>
+                </button>
+                <button class="py-2 px-2 bg-black text-white">
+                    <i class="fa-solid fa-angle-right plus-comments"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <!-- الجزء العلوي -->
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h2>Ahmed55Programer</h2>
+                    <p>© Ahmed55Programer 2025. All rights reserved.</p>
+                </div>
+
+                <div class="footer-menu">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-info">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#">About Me</a></li>
+                        <li><a href="#">Supports</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <a href="tel:+00000000000" class="sec-text"><i class="fa fa-phone"></i> my phone</a>
+                    <a href="mailto:ahmed55programer@gmail.com"><i class="fa fa-envelope"></i> My Gmail</a>
+                    <p><i class="fa fa-map-marker"></i> Cairo, Egypt</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>Follow me on:</p>
+                <a href="https://github.com/Ahmed-C0der" target="_blank">
+                    <i class="fa-brands fa-github"></i></i> GitHub
+                </a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/master.js"></script>
+</body>
+
+</html>
