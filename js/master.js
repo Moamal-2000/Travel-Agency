@@ -56,34 +56,23 @@ document.addEventListener('DOMContentLoaded', handleResize);
 
 // end header
 // start go-up button
-let goUp = document.querySelector(".go-up")
-window.onscroll = function(){
-    if(window.scrollY >= 500){
 
-    goUp.classList.remove("opacity-0")
-}else{
-    goUp.classList.add("opacity-0")
-}
-
-}
-goUp.addEventListener("click",((e)=>{
-    window.scrollTo({
-        top:0,
-        left:0
-    })
-}))
-
-
-// 
-window.onload = function () {
-    let change = window.sessionStorage.getItem("ChangeWallpaper")
-
-    if (change !== "manual") {
-        bulltesContainer.classList.add(change)
-        ttb = setInterval(changeWallpaper, 4000)
-    }
-
-}
+window.addEventListener('load', function() {
+    let goUp = document.querySelector(".go-up");
+    window.onscroll = function() {
+        if(window.scrollY >= 500){
+            goUp.classList.remove("opacity-0");
+        } else {
+            goUp.classList.add("opacity-0");
+        }
+    };
+    goUp.addEventListener("click", function(e) {
+        window.scrollTo({
+            top: 0,
+            left: 0
+        });
+    });
+});
 
 
 
@@ -93,13 +82,15 @@ for (let i = 0; i < imgs.length; i++) {
     bulltes.classList.add("bullte");
     bulltes.style.cssText
     bulltesContainer.appendChild(bulltes)
-    console.log(bulltes)
+
 }
 
 
 // select bulltes
 let bullets = document.querySelectorAll("ul li.bullte");
-bullets[0].classList.add("active")
+if (bullets.length > 0) {
+    bullets[0].classList.add("active");
+}
 
 // change wallpaper and set class active
 let i = 0;
@@ -112,54 +103,34 @@ bullets.forEach((el, ind) => {
         // add class active
         this.classList.add("active");
         let activeInd = ind;
-        i = ind
-        console.log(activeInd);
+        i = ind;
         let wallpaper = imgs[activeInd].src;
-        console.log(wallpaper);
-        // toggle class auto from ul
-        bulltesContainer.classList.toggle("auto")
-
         // change wallpaper
-        home.style.cssText = `background-image:url(${wallpaper})`
-
-        if (bulltesContainer.classList.contains("auto")) {
-            window.sessionStorage.setItem("ChangeWallpaper", "auto")
-        } else {
-            window.sessionStorage.setItem("ChangeWallpaper", "manual")
-
-        }
-
-        clearInterval(ttb)
-        ttb = setInterval(changeWallpaper, 4000)
-
-
-
+        home.style.cssText = `background-image:url(${wallpaper})`;
     });
 });
 
-function changeWallpaper() {
-    if (bulltesContainer.classList.contains("auto")) {
-        if (i >= bullets.length) {
-            i = 0
-        }
-        bullets.forEach(b => b.classList.remove("active"));
-        bullets[i].classList.add("active")
-        home.style.cssText = `background-image:url(${imgs[i].src})`
-        i++
-        console.log("true")
-    }
 
+window.addEventListener('load', function() {
+    setInterval(changeWallpaper, 4000);
+    console.log("loaded");
+function changeWallpaper() {
+    if (i >= bullets.length) {
+        i = 0;
+    }
+    bullets.forEach(b => b.classList.remove("active"));
+    bullets[i].classList.add("active");
+    home.style.cssText = `background-image:url(${imgs[i].src})`;
+    i++;
 }
 
-
-// we will add info with JSON
+});
 
 const dist = document.querySelector("div.box.Destination select");
 const chickIn = document.querySelector("div.box.check-in select");
 const chickOut = document.querySelector("div.box.check-out select");
 
 fetch("js/data.json").then((response) => {
-    console.log("true");
     return response.json()
 }).then((values) => {
 
@@ -200,37 +171,38 @@ fetch("js/data.json").then((response) => {
 const slideImge = document.querySelectorAll(".img-slide img");
 let slide = document.querySelector(".slide")
 //------------->
+window.addEventListener('load', function() {
+    for (let i = 0; i < slideImge.length; i++) {
+        let slideCard = document.createElement("div");
+        slideCard.classList.add("card");
+        slide.appendChild(slideCard);
+        let slideImage = slideImge[i];
+        slideCard.appendChild(slideImage);
+        let info = document.createElement("div");
+        info.classList.add("info");
+        slideCard.appendChild(info);
+        let h2 = document.createElement("h2");
+        let p = document.createElement("p");
+        // bring text from JSON file
+        fetch("js/data.json").then((response) => {
 
-// first creat slide card
-for (let i = 0; i < slideImge.length; i++) {
-    let slideCard = document.createElement("div");
-    slideCard.classList.add("card");
-    slide.appendChild(slideCard);
-    let slideImage = slideImge[i];
-    slideCard.appendChild(slideImage);
-    let info = document.createElement("div");
-    info.classList.add("info");
-    slideCard.appendChild(info);
-    let h2 = document.createElement("h2")
-    let p = document.createElement("p")
-    // bring text from JSON file
-    fetch("js/data.json").then((response) => {
-        console.log("fulfilled");
-        return response.json()
-    }).then((response) => {
-        // console.log(response["slide Title"][i])
-        h2.textContent = response["slide Title"][i];
-        p.textContent = response["slide Text"][i]
-    })
-    // Entering texts
-    info.appendChild(h2)
-    info.appendChild(p)
-    let link = document.createElement("a")
-    link.href = "mailto:travelas@gmail.com"
-    link.textContent = "Book Now"
-    info.appendChild(link)
-    
-}
+            return response.json();
+        }).then((response) => {
+            h2.textContent = response["slide Title"][i];
+            p.textContent = response["slide Text"][i];
+        });
+        // Entering texts
+        info.appendChild(h2);
+        info.appendChild(p);
+        let link = document.createElement("a");
+        link.href = "mailto:travelas@gmail.com";
+        link.textContent = "Book Now";
+        info.appendChild(link);
+    }
+});
+
+// --------------------->   
+
 
 // Animate images
 const minusTrans = document.querySelector(".minus-trans");
@@ -279,6 +251,20 @@ minusTrans.addEventListener("click", ((e) => {
 
 
 }))
+
+function minusTransform( visible,slide , card , plus , slideImge) {
+    plus = 0.8 * (slideImge[0].width);
+    visible = Math.floor(slide.offsetWidth / (card[0].offsetWidth));
+    let inVisible = card.length - visible;
+    let maxSlide = inVisible * plus;
+    let tranform = 0
+    if (tranform >= -maxSlide) {
+        card.forEach((el) => {
+            el.style.cssText = `transform: translateX(${tranform + minus}px)`  
+        });
+    }
+}
+
 plusTrans.addEventListener("click", ((e) => {
 
     let card = document.querySelectorAll(".slide .card");
@@ -317,11 +303,11 @@ for (let i = 0; i < slideImgeOffer.length; i++) {
     let price = document.createElement("span")
     // bring text from JSON file
     fetch("js/data.json").then((response) => {
-        console.log("fulfilled");
+
         return response.json()
     }).then((response) => {
 
-        console.log(response["offer title"][i])
+
         h2.textContent = response["offer title"][i];
         p.textContent = response["offer info"][i];
         price.textContent="price is "+response["offer prices"][i]
