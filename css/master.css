@@ -86,9 +86,10 @@ hr{
 }
 @media (max-width:768px){
 .h1-title{
-    font-size: 54px;
+    font-size: 35px;
     font-family: var(--title-family);
     color: rgba(23, 36, 50, 1);
+    margin-bottom: 9px;
 
 }
 
@@ -334,12 +335,12 @@ i.list {
     overflow: hidden;
 }
 
-.destination-section .container .text h1,
+/* .destination-section .container .text h1,
 .offer-section .container .text h1 {
     font-family: var(--title-family);
     font-size: 45px;
     margin-bottom: 9px;
-}
+} */
 
 .destination-section .container .text hr,
 .offer-section .container .text hr {

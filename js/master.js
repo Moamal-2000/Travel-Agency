@@ -171,7 +171,7 @@ fetch("js/data.json").then((response) => {
 const slideImge = document.querySelectorAll(".img-slide img");
 let slide = document.querySelector(".slide")
 //------------->
-window.addEventListener('load', function() {
+
     for (let i = 0; i < slideImge.length; i++) {
         let slideCard = document.createElement("div");
         slideCard.classList.add("card");
@@ -198,8 +198,7 @@ window.addEventListener('load', function() {
         link.href = "mailto:travelas@gmail.com";
         link.textContent = "Book Now";
         info.appendChild(link);
-    }
-});
+    };
 
 // --------------------->   
 
@@ -210,79 +209,88 @@ const plusTrans = document.querySelector(".plus-trans");
 minusTrans.style.cssText = "background-color:var(--main-color)"
 plusTrans.style.cssText = "background-color:black"
 
-
+let minus = -1 * /*النسبة*/0.8 * (slideImge[0].width);
+let plus = - minus;
+let transform= 0 ;
 let card = document.querySelectorAll(".slide .card");
-let plus = 0.8 * (slideImge[0].width);
-let minus = - plus;
-let tranform = 0
+
+// i will pass transform to function as lastTranform {parameter} then i will return it to tranform variable to save the value
+
+/* 
+Explanis parameters of minusTransform function:---->
+
+visible: number of visible cards in the slide
+slide: the slide container
+card: the cards in the slide
+plus: the value to move the slide to the left
+slideImge: the images in the slide
+lastTranform: the last value of transform to keep track of the current position
+*/
 
 
 
 
 
 
+minusTrans.addEventListener("click", () => {
+    transform = minusTransform(slide, card, minus, transform);
+});
+plusTrans.addEventListener("click", () => {
+transform = plusTransform(slide, card, plus, transform);
+});
 
+function minusTransform(slide, card, minus, lastTransform) {
+    console.log("clicked");
+    let transformInFun = lastTransform;
 
-minusTrans.addEventListener("click", ((e) => {
-    let visible = Math.floor(slide.offsetWidth / (card[0].offsetWidth))
+    let visible = Math.floor(slide.offsetWidth / (card[0].offsetWidth));
     let inVisible = card.length - visible;
-    let maxSlide = inVisible * plus
-    if (tranform >= -maxSlide) {
+    let maxSlide = inVisible * minus;
+    if (transformInFun >= maxSlide) {
         card.forEach((el) => {
-
-            el.style.cssText = `transform: translateX(${tranform + minus}px)`
-
-        })
-        tranform = tranform + minus;
-        minusTrans.style.cssText = "background-color:var(--main-color)"
-        plusTrans.style.cssText = "background-color:black"
-    }else{
-        if(tranform >= -(maxSlide + plus)){
-            card.forEach((el) => {
-            el.style.cssText = `transform: translateX(${tranform + minus}px)`;
-        })
-            tranform = tranform + minus
-    
-        };
-
-        plusTrans.style.cssText = "background-color:var(--main-color)"
-        minusTrans.style.cssText = "background-color:black"
-    }
-
-
-}))
-
-function minusTransform( visible,slide , card , plus , slideImge) {
-    plus = 0.8 * (slideImge[0].width);
-    visible = Math.floor(slide.offsetWidth / (card[0].offsetWidth));
-    let inVisible = card.length - visible;
-    let maxSlide = inVisible * plus;
-    let tranform = 0
-    if (tranform >= -maxSlide) {
-        card.forEach((el) => {
-            el.style.cssText = `transform: translateX(${tranform + minus}px)`  
+            el.style.transform = `translateX(${transformInFun + minus}px)`;  
         });
+        transformInFun += minus;
+        minusTrans.style.cssText = "background-color:var(--main-color)";
+        plusTrans.style.cssText = "background-color:black";
+    } else {
+        if (transformInFun >= -(maxSlide + minus)) {
+            card.forEach((el) => {
+                el.style.transform = `translateX(${transformInFun + minus}px)`;
+            });
+            transformInFun += minus;
+        }
+        plusTrans.style.cssText = "background-color:var(--main-color)";
+        minusTrans.style.cssText = "background-color:black";
     }
+    // update the external transform variable by returning the new value
+    return transformInFun;
 }
 
-plusTrans.addEventListener("click", ((e) => {
+function plusTransform(slide, card, plus, lastTransform) {
+    console.log("clicked");
+    let transformInFun = lastTransform;
 
-    let card = document.querySelectorAll(".slide .card");
-    if (tranform < 0) {
+    // طول ما احنا مش في بداية السلايدر (يعني أقل من 0) نتحرك يمين
+    if (transformInFun < 0) {
         card.forEach((el) => {
+            el.style.transform = `translateX(${transformInFun + plus}px)`;  
+        });
+        transformInFun += plus;
 
-            el.style.cssText = `transform: translateX(${tranform + plus}px)`
-        })
-        tranform = tranform + plus
-        plusTrans.style.cssText = "background-color:var(--main-color)"
-        minusTrans.style.cssText = "background-color:black"
-    }else{
-        minusTrans.style.cssText = "background-color:var(--main-color)"
-        plusTrans.style.cssText = "background-color:black"
+        minusTrans.style.cssText = "background-color:var(--main-color)";
+        plusTrans.style.cssText = "background-color:black";
+    } else {
+        // وقف عند 0
+        plusTrans.style.cssText = "background-color:var(--main-color)";
+        minusTrans.style.cssText = "background-color:black";
     }
 
+    return transformInFun;
+}
 
-}))
+
+
 
 
 // start offers
@@ -337,40 +345,12 @@ plusTransOffer.style.cssText = "background-color:black"
 
 
 minusTransOffer.addEventListener("click", ((e) => {
-    let visible = Math.floor(slide.offsetWidth / (cardOffer[0].offsetWidth))
-    let inVisible = cardOffer.length - visible;
-    let maxSlide = inVisible * plusOffer
-    if (tranformOffer >= -maxSlide) {
-        cardOffer.forEach((el) => {
-            el.style.cssText = `transform: translateX(${tranformOffer + minusOffer}px)`
-        })
-        tranformOffer = tranformOffer + minusOffer;
-        minusTransOffer.style.cssText = "background-color:var(--main-color)"
-        plusTransOffer.style.cssText = "background-color:black"
-    }else{
-        if(tranformOffer >= -(maxSlide + plusOffer)){
-            cardOffer.forEach((el) => {
-            el.style.cssText = `transform: translateX(${tranformOffer + minusOffer}px)`;
-        });
-        tranformOffer =tranformOffer + minusOffer
-        }
-        plusTransOffer.style.cssText = "background-color:var(--main-color)"
-        minusTransOffer.style.cssText = "background-color:black"
-    }
-}))
+tranformOffer= minusTransform(slideOffer, cardOffer, minusOffer, tranformOffer);
+
+}));
 
 plusTransOffer.addEventListener("click", ((e) => {
-    if (tranformOffer < 0) {
-        cardOffer.forEach((el) => {
-            el.style.cssText = `transform: translateX(${tranformOffer + plusOffer}px)`
-        })
-        tranformOffer = tranformOffer + plusOffer
-         plusTransOffer.style.cssText = "background-color:var(--main-color)"
-        minusTransOffer.style.cssText = "background-color:black"
-    }else{
-        minusTransOffer.style.cssText = "background-color:var(--main-color)"
-        plusTransOffer.style.cssText = "background-color:black"
-    }
+    tranformOffer= plusTransform(slideOffer, cardOffer, plusOffer, tranformOffer);
 }))
 
 
@@ -384,47 +364,16 @@ let tranformPlanners = 0;
 let cardPlanners = document.querySelectorAll(".planners .card");
 const minusTransPlanners = document.querySelector(".planners .slide-controler  .minus-trans");
 const plusTransPlanners = document.querySelector(".planners .slide-controler .plus-trans");
-
+const slidePlanners = document.querySelector(".planners .container .slide-planners");// replace slide-planners with img-container
 minusTransPlanners.style.cssText = "background-color:var(--main-color)";
 plusTransPlanners.style.cssText = "background-color:black";
 
 minusTransPlanners.addEventListener("click", ((e) => {
-    let slide = document.querySelector(".planners .img-container");
-    let visible = Math.floor(slide.offsetWidth / (cardPlanners[0].offsetWidth));
-    let inVisible = cardPlanners.length - visible;
-    let maxSlide = inVisible * plusPlanners;
-
-    if (tranformPlanners >= -maxSlide) {
-        cardPlanners.forEach((el) => {
-            el.style.transform = `translateX(${tranformPlanners + minusPlanners}px)`;
-        })
-        tranformPlanners = tranformPlanners + minusPlanners;
-        minusTransPlanners.style.cssText = "background-color:var(--main-color)";
-        plusTransPlanners.style.cssText = "background-color:black";
-    } else {
-        if(tranformPlanners >= -(maxSlide + plusPlanners)){
-            cardPlanners.forEach((el) => {
-            el.style.cssText = `transform: translateX(${tranformPlanners + minusPlanners}px)`;
-        });
-        tranformPlanners = tranformPlanners + minusPlanners
-        }
-        plusTransPlanners.style.cssText = "background-color:var(--main-color)";
-        minusTransPlanners.style.cssText = "background-color:black";
-    }
+    let tranformPlanners = minusTransform(slidePlanners, cardPlanners, minusPlanners, tranformPlanners);
 }))
 
 plusTransPlanners.addEventListener("click", ((e) => {
-    if (tranformPlanners < 0) {
-        cardPlanners.forEach((el) => {
-            el.style.transform = `translateX(${tranformPlanners + plusPlanners}px)`; 
-        })
-        tranformPlanners = tranformPlanners + plusPlanners;
-        plusTransPlanners.style.cssText = "background-color:var(--main-color)";
-        minusTransPlanners.style.cssText = "background-color:black";
-    } else {
-        minusTransPlanners.style.cssText = "background-color:var(--main-color)";
-        plusTransPlanners.style.cssText = "background-color:black";
-    }
+    let tranformPlanners = plusTransform(slidePlanners, cardPlanners, plusPlanners, tranformPlanners);
 }))
 
 const hideImg = document.querySelector(".control-vision")
@@ -439,7 +388,7 @@ hideImg.addEventListener("click",((e)=>{
     parentImgs.classList.add("opacity-0")
 
 }))
-
+//  End planners
 // destination gallery
 
 const slideImgeGallery = document.querySelectorAll(".img-gallery img");
@@ -472,48 +421,20 @@ minusTransGallery.parentElement.style.cssText = "background-color:var(--main-col
 plusTransGallery.parentElement.style.cssText = "background-color:black";
 
 minusTransGallery.addEventListener("click", ((e) => {
-    let visible = Math.floor(slideGallery.offsetWidth / (cardGallery[0].offsetWidth));
-    let inVisible = cardGallery.length - visible;
-    let maxSlide = inVisible * plusGallery;
-    if (transformGallery >= -maxSlide) {
-        cardGallery.forEach((el) => {
-            el.style.cssText = `transform: translateX(${transformGallery + minusGallery}px)`;
-        });
-        transformGallery = transformGallery + minusGallery;
-        minusTransGallery.parentElement.style.cssText = "background-color:var(--main-color)";
-        plusTransGallery.parentElement.style.cssText = "background-color:black";
-    } else {
-        if(transformGallery >= -(maxSlide + plusGallery)){
-            cardGallery.forEach((el) => {
-            el.style.cssText = `transform: translateX(${transformGallery + minusGallery}px)`;
-        });
-        transformGallery = transformGallery + minusGallery
-        }
-        plusTransGallery.parentElement.style.cssText = "background-color:var(--main-color)";
-        minusTransGallery.parentElement.style.cssText = "background-color:black";
-    }
+    transformGallery = minusTransform(slideGallery, cardGallery, minusGallery, transformGallery);
 }));
 
 plusTransGallery.addEventListener("click", ((e) => {
-    if (transformGallery < 0) {
-        cardGallery.forEach((el) => {
-            el.style.cssText = `transform: translateX(${transformGallery + plusGallery}px)`;
-        });
-        transformGallery = transformGallery + plusGallery;
-        plusTransGallery.parentElement.style.cssText = "background-color:var(--main-color)";
-        minusTransGallery.parentElement.style.cssText = "background-color:black";
-    } else {
-        minusTransGallery.parentElement.style.cssText = "background-color:var(--main-color)";
-        plusTransGallery.parentElement.style.cssText = "background-color:black";
-    }
+    transformGallery = plusTransform(slideGallery, cardGallery, plusGallery, transformGallery);
 }));
+
 // ---------------------------->
 // comments
 // ====== جلب الصور من hidden container ======
 const commentImages = document.querySelectorAll(".img-comments-hidden img");
 const slideComments = document.querySelector(".slide-comments");
 
-// بيانات الأشخاص
+// persons data
 const persons = [
   { name: "John Doe", job: "Traveler" },
   { name: "Sarah Smith", job: "Photographer" },
@@ -522,29 +443,27 @@ const persons = [
   { name: "David Lee", job: "Doctor" }
 ];
 
-// النص الأساسي للتعليق
+// feedbackText
 const feedbackText = `But I must explain to you how all this mistaken idea of denouncing 
 pleasure and praising pain was born and I will give you a complete account of the system 
 and expound the actual teachings of the great explorer of the truth, the master-builder of 
 human happiness.`;
 
-// ====== بناء الكروت ======
+// ====== build card ======
 for (let i = 0; i < commentImages.length; i++) {
   let card = document.createElement("div");
   card.classList.add("comment-card");
 
-  // صورة
+
   let img = commentImages[i].cloneNode(true);
   img.classList.add("comment-img");
   card.appendChild(img);
 
-  // النص
   let p = document.createElement("p");
   p.textContent = feedbackText;
   p.classList.add("comment-text"); // بدال sec-text
   card.appendChild(p);
 
-  // التقييم
   let stars = document.createElement("div");
   stars.classList.add("stars");
   stars.innerHTML = `<i class="fa-solid fa-star"></i>
@@ -554,13 +473,13 @@ for (let i = 0; i < commentImages.length; i++) {
                      <i class="fa-solid fa-star"></i>`;
   card.appendChild(stars);
 
-  // الاسم
+  // name
   let name = document.createElement("h3");
   name.textContent = persons[i].name;
   name.classList.add("person-name");
   card.appendChild(name);
 
-  // الوظيفة
+    // job
   let job = document.createElement("p");
   job.textContent = persons[i].job;
   job.classList.add("person-job");
@@ -569,7 +488,8 @@ for (let i = 0; i < commentImages.length; i++) {
   slideComments.appendChild(card);
 }
 
-// ====== السلايدر ======
+// ====== slider ======
+
 let plusComments = 0.8 * document.querySelector(".comment-card").offsetWidth;
 let minusComments = -plusComments;
 let transformComments = 0;
@@ -578,46 +498,17 @@ let cardComments = document.querySelectorAll(".slide-comments .comment-card");
 const minusTransComments = document.querySelector(".slide-control-comments .minus-comments");
 const plusTransComments = document.querySelector(".slide-control-comments .plus-comments");
 
-// ألوان مبدئية
+
 minusTransComments.parentElement.style.cssText = "background-color:var(--main-color)";
 plusTransComments.parentElement.style.cssText = "background-color:black";
 
-// زرار اليسار
-minusTransComments.addEventListener("click", () => {
-  let visible = Math.floor(slideComments.offsetWidth / cardComments[0].offsetWidth);
-  let inVisible = cardComments.length - visible;
-  let maxSlide = inVisible * plusComments;
 
-  if (transformComments >= -maxSlide) {
-    cardComments.forEach((el) => {
-      el.style.transform = `translateX(${transformComments + minusComments}px)`;
-    });
-    transformComments = transformComments + minusComments;
-    minusTransComments.parentElement.style.cssText = "background-color:var(--main-color)";
-    plusTransComments.parentElement.style.cssText = "background-color:black";
-  } else {
-    if (transformComments >= -(maxSlide + plusComments)) {
-      cardComments.forEach((el) => {
-        el.style.transform = `translateX(${transformComments + minusComments}px)`;
-    });
-    transformComments = transformComments + minusComments
-    }
-    plusTransComments.parentElement.style.cssText = "background-color:var(--main-color)";
-    minusTransComments.parentElement.style.cssText = "background-color:black";
-  }
+minusTransComments.addEventListener("click", () => {
+  transformComments = minusTransform(slideComments, cardComments, minusComments, transformComments);
+  
 });
 
-// زرار اليمين
+
 plusTransComments.addEventListener("click", () => {
-  if (transformComments < 0) {
-    cardComments.forEach((el) => {
-      el.style.transform = `translateX(${transformComments + plusComments}px)`;
-    });
-    transformComments = transformComments + plusComments;
-    plusTransComments.parentElement.style.cssText = "background-color:var(--main-color)";
-    minusTransComments.parentElement.style.cssText = "background-color:black";
-  } else {
-    minusTransComments.parentElement.style.cssText = "background-color:var(--main-color)";
-    plusTransComments.parentElement.style.cssText = "background-color:black";
-  }
+    transformComments = plusTransform(slideComments, cardComments, plusComments, transformComments);
 });
