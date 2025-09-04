@@ -557,8 +557,11 @@ i.list {
     max-width: 520px;
 }
 .planners .container .imgs{
+        display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    justify-items: center;
+    width: 100%;
     gap: 15px;
-    flex-wrap: wrap;
 }
 .planners .container .imgs img{
     height: 230px;
