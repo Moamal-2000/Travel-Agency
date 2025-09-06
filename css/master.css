@@ -128,7 +128,7 @@ body {
 }
 
 body>.home {
-    background: url(../photos/background-0.jpg) no-repeat fixed center;
+    background: url(../photos/background-0.webp) no-repeat fixed center;
     background-size: cover;
     position: relative;
     height: 100vh;
