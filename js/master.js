@@ -346,7 +346,6 @@ plusTransOffer.style.cssText = "background-color:black"
 
 minusTransOffer.addEventListener("click", ((e) => {
 tranformOffer= minusTransform(slideOffer, cardOffer, minusOffer, tranformOffer);
-
 }));
 
 plusTransOffer.addEventListener("click", ((e) => {
@@ -360,20 +359,21 @@ const slideimgPlanners = document.querySelectorAll(".planners .img-container img
 
 let plusPlanners = 1 * (slideimgPlanners[0].offsetWidth); 
 let minusPlanners = -plusPlanners;
-let tranformPlanners = 0;
+
 let cardPlanners = document.querySelectorAll(".planners .card");
 const minusTransPlanners = document.querySelector(".planners .slide-controler  .minus-trans");
 const plusTransPlanners = document.querySelector(".planners .slide-controler .plus-trans");
-const slidePlanners = document.querySelector(".planners .container .slide-planners");// replace slide-planners with img-container
+const slidePlanners = document.querySelector(".planners .container .img-container");// replace slide-planners with img-container
 minusTransPlanners.style.cssText = "background-color:var(--main-color)";
 plusTransPlanners.style.cssText = "background-color:black";
+let tranformPlanners = 0;
 
 minusTransPlanners.addEventListener("click", ((e) => {
-    let tranformPlanners = minusTransform(slidePlanners, cardPlanners, minusPlanners, tranformPlanners);
+    tranformPlanners = minusTransform(slidePlanners, cardPlanners, minusPlanners, tranformPlanners);
 }))
 
 plusTransPlanners.addEventListener("click", ((e) => {
-    let tranformPlanners = plusTransform(slidePlanners, cardPlanners, plusPlanners, tranformPlanners);
+    tranformPlanners = plusTransform(slidePlanners, cardPlanners, plusPlanners, tranformPlanners);
 }))
 
 const hideImg = document.querySelector(".control-vision")
