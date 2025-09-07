@@ -4,7 +4,6 @@
   --sec-color: #331811;
   --sec-color-2: #61291c;
   --sec-text: #767e86;
-  --title-family: Playfair Display;
   --section-padding: 100px 0;
 }
 
@@ -65,10 +64,6 @@ img {
 
 .sec-text {
   color: var(--sec-text);
-}
-
-.tilte-family {
-  font-family: var(--title-family);
 }
 
 .h4 {
