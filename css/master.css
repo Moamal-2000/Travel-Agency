@@ -315,9 +315,9 @@ i.list {
   }
 }
 
-/* .home .reserve {
-    z-index: 2;
-} */
+.home .reserve {
+  min-height:295.5px;
+}
 
 .home .reserve .box {
   display: flex;
