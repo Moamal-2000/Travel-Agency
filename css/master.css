@@ -196,6 +196,10 @@ body>.home .main-content {
   position: relative;
 }
 
+.home .text-container {
+  min-height: 239px;
+}
+
 body>.home .main-text {
   position: relative;
   /* z-index: 2; */
@@ -316,7 +320,7 @@ i.list {
 }
 
 .home .reserve {
-  min-height:295.5px;
+  min-height: 295.5px;
 }
 
 .home .reserve .box {
@@ -332,6 +336,25 @@ i.list {
 .home .reserve .box select {
   color: black;
   font-family: var(--title-family);
+  min-height: 41px;
+}
+
+.home .reserve .box .destination-select {
+  min-width: 104px;
+}
+
+.home .reserve .box .check-in-select {
+  min-width: 176px;
+}
+
+.home .reserve .box .check-out-select {
+  min-width: 174px;
+}
+
+.home .reserve .book {
+  min-height: 54px;
+  min-height: 54px;
+  height: 54px;
 }
 
 .home .reserve .book a {
