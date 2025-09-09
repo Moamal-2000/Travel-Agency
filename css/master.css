@@ -324,8 +324,9 @@ i.list {
   gap: 12px;
 }
 
-.home .reserve .box span {
+.home .reserve .box label {
   color: #767e86;
+  cursor: pointer;
 }
 
 .home .reserve .box select {
