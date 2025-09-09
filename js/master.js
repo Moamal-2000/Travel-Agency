@@ -17,7 +17,10 @@ function mountMobile() {
     if (drawer || window.innerWidth > 768) return;
     drawer = document.createElement('div');
     drawer.className = 'parent-links';
-    drawer.innerHTML = '<i class="fa-solid fa-xmark close" aria-label="Close"></i>';
+    drawer.innerHTML = `
+    <button type="button" class="close" aria-label="Close mobile menu">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>`
     header.appendChild(drawer);
 
     drawer.appendChild(ulLinks);
