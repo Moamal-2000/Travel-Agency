@@ -4,23 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-        rel="stylesheet">
-
-
-    <!-- css files -->
-    <link rel="stylesheet" href="css/brands.min.css" />
-    <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/normalize.css" />
+    <meta name="description" content="Write website description here" />
+    <meta name="keywords" content="Write website keywords here spread them with comma for example keyword1, keyword2">
+    <title>Travilian</title>
     <!-- tailwind -->
     <link rel="stylesheet" href="css/output.css" />
     <link rel="stylesheet" href="css/master.css" />
+    <!-- css files -->
+    <link rel="stylesheet" href="css/brands.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/normalize.css" media="print" onload="this.media='all'">
 </head>
 
 <body>
@@ -77,7 +70,7 @@
             <!-- End header -->
         </div>
         <div class="main-content">
-            <div class="container">
+            <div class="container text-container">
                 <div class="main-text text-white">
                     <h1 class="h1-title">Start your unforgettable journey with us.</h1>
                     <p class="mt-4 text-2xl">
@@ -91,7 +84,7 @@
                 <div class="planes flex flex-wrap md:flex-row flex-col gap-6 w-full">
                     <div class="box Destination flex flex-col w-full md:w-auto">
                         <span>Destination</span>
-                        <select class="border border-solid border-stone-500 p-2 rounded">
+                        <select class="destination-select border border-solid border-stone-500 p-2 rounded">
                             <!-- we will add it with js -->
                         </select>
                     </div>
@@ -105,13 +98,13 @@
                     </div>
                     <div class="box check-in flex flex-col w-full md:w-auto">
                         <span>Check in</span>
-                        <select class="border border-solid border-stone-500 p-2 rounded">
+                        <select class="check-in-select border border-solid border-stone-500 p-2 rounded">
                             <!-- I will add it with js -->
                         </select>
                     </div>
                     <div class="box check-out flex flex-col w-full md:w-auto">
                         <span>Check out</span>
-                        <select class="border border-solid border-stone-500 p-2 rounded">
+                        <select class="check-out-select border border-solid border-stone-500 p-2 rounded">
                             <!-- I will add it with js -->
                         </select>
                     </div>
@@ -137,11 +130,13 @@
                 </p>
             </div>
             <div class="slide-control flex gap-2">
-                <button class="text-white bg-black py-2 px-3 flex justify-center items-center minus-trans">
-                    <i class="fa-solid fa-angle-left"></i>
+                <button class="text-white bg-black py-2 px-3 flex justify-center items-center minus-trans"
+                    aria-label="Previous Slide">
+                    <i class="fa-solid fa-angle-left" aria-hidden="true"></i>
                 </button>
-                <button class="text-white bg-black py-2 px-3 flex justify-center items-center plus-trans">
-                    <i class="fa-solid fa-angle-right"></i>
+                <button class="text-white bg-black py-2 px-3 flex justify-center items-center plus-trans"
+                    aria-label="Next Slide">
+                    <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -170,11 +165,13 @@
                 </p>
             </div>
             <div class="slide-control-offer flex gap-2">
-                <button class="text-white bg-black py-2 px-3 flex justify-center items-center minus-trans">
-                    <i class="fa-solid fa-angle-left"></i>
+                <button class="text-white bg-black py-2 px-3 flex justify-center items-center minus-trans"
+                    aria-label="Next Slide">
+                    <i class="fa-solid fa-angle-left" aria-hidden="true"></i>
                 </button>
-                <button class="text-white bg-black py-2 px-3 flex justify-center items-center plus-trans">
-                    <i class="fa-solid fa-angle-right"></i>
+                <button class="text-white bg-black py-2 px-3 flex justify-center items-center plus-trans"
+                    aria-label="Previous Slide">
+                    <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -332,11 +329,11 @@
                 <p class="sec-text">Our photo gallery on trip</p>
             </div>
             <div class="slide-control-galley self-end flex gap-3">
-                <button class="py-2 px-2 bg-black text-white">
-                    <i class="fa-solid fa-angle-left minus-gallrey"></i>
+                <button class="py-2 px-2 bg-black text-white" aria-label="Next Slide">
+                    <i class="fa-solid fa-angle-left minus-gallrey" aria-hidden="true"></i>
                 </button>
-                <button class="py-2 px-2 bg-black text-white">
-                    <i class="fa-solid fa-angle-right plua-gallery"></i>
+                <button class="py-2 px-2 bg-black text-white" aria-label="Previous Slide">
+                    <i class="fa-solid fa-angle-right plua-gallery" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -382,11 +379,11 @@
 
             <!-- control -->
             <div class="slide-control-comments justify-center flex gap-3">
-                <button class="py-2 px-2 bg-black text-white">
-                    <i class="fa-solid fa-angle-left minus-comments"></i>
+                <button class="py-2 px-2 bg-black text-white" aria-label="Next Slide">
+                    <i class="fa-solid fa-angle-left minus-comments" aria-hidden="true"></i>
                 </button>
-                <button class="py-2 px-2 bg-black text-white">
-                    <i class="fa-solid fa-angle-right plus-comments"></i>
+                <button class="py-2 px-2 bg-black text-white" aria-label="Previous Slide">
+                    <i class="fa-solid fa-angle-right plus-comments" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
